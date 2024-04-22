@@ -29,7 +29,23 @@ document.onpaste = function(event) {
   var items = (event.clipboardData || event.originalEvent.clipboardData).items;
   console.log(JSON.stringify(items)); // will give you the mime types
   var blob = items[0].getAsFile();
-  console.log(blob.size);
+  console.log(items[0]);
+  console.log(items[1]);
+  //console.log(blob.size);
+  // Assuming items is an array of DataTransferItems
+	for (let i = 0; i < items.length; i++) {
+	  const item = items[i];
+	  // Check if the item type is 'image/png'
+	  if (item.type === 'image/png') {
+		// Convert the item to a Blob
+
+		console.log('Blob:', blob);
+		blob = item.getAsFile();
+		// Exit the loop since we found the desired item
+		break;
+	  }
+	}
+  
   
   var reader = new FileReader();
   reader.onload = function(event) {
