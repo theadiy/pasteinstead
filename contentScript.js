@@ -57,7 +57,8 @@ document.onpaste = function(event) {
     const dataTransfer = new DataTransfer();
     dataTransfer.items.add(file);
     
-    // Find the maximum number of upload_file element ID
+    //upload for POC section
+	// Find the maximum number of upload_file element ID for POC 
     let maxNumber = -1;
     document.querySelectorAll('[id^="upload_file"]').forEach(function(element) {
       const idNumber = parseInt(element.id.replace('upload_file', ''));
@@ -74,6 +75,25 @@ document.onpaste = function(event) {
     } else {
       console.error('No upload file element found with ID:', nextUploadFileId);
     }
+	
+	// upload for ticket section
+	const fileInput2 = document.querySelector('#add_req > div > div > div.modal-body.p-4 > div > div:nth-child(4) > div > div:nth-child(6) > input');
+	if(fileInput2){
+		fileInput2.files = dataTransfer.files;
+      fileInput2.dispatchEvent(new Event('change'));
+	}else {
+		console.error('No upload file element found or Not in Ticket section.');
+	}
+	
+	//upload for ticket details section 
+	const fileInput3 = document.getElementById('getFile');
+	if(fileInput3){
+		fileInput3.files = dataTransfer.files;
+      fileInput3.dispatchEvent(new Event('change'));
+	}else {
+		console.error('No upload file element found or Not in Ticket section.');
+	}
+	
   }
   
   reader.readAsDataURL(blob);
