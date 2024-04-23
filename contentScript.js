@@ -23,6 +23,8 @@
   reader.readAsDataURL(blob);
 } */
 
+// Counter variable to keep track of the number of images
+let imageCount = 1;
 
 
 document.onpaste = function(event) {
@@ -52,7 +54,7 @@ document.onpaste = function(event) {
     console.log(event.target.result); // data url!
     //loadImage(event.target.result);
     const type = 'image/png';
-    const file = new File([blob], 'image.png', { type });
+    const file = new File([blob], 'image'+imageCount+'.png', { type });
     console.log(file.size);
     const dataTransfer = new DataTransfer();
     dataTransfer.items.add(file);
@@ -72,6 +74,7 @@ document.onpaste = function(event) {
     if (fileInput) {
       fileInput.files = dataTransfer.files;
       fileInput.dispatchEvent(new Event('change'));
+	  imageCount++;
     } else {
       console.error('No upload file element found with ID:', nextUploadFileId);
     }
@@ -81,6 +84,7 @@ document.onpaste = function(event) {
 	if(fileInput2){
 		fileInput2.files = dataTransfer.files;
       fileInput2.dispatchEvent(new Event('change'));
+	  imageCount++;
 	}else {
 		console.error('No upload file element found or Not in Ticket section.');
 	}
@@ -90,6 +94,7 @@ document.onpaste = function(event) {
 	if(fileInput3){
 		fileInput3.files = dataTransfer.files;
       fileInput3.dispatchEvent(new Event('change'));
+	  imageCount++;
 	}else {
 		console.error('No upload file element found or Not in Ticket section.');
 	}
