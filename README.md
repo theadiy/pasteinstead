@@ -4,7 +4,7 @@ I built this because I was too lazy to save images to file system and then uploa
 
 ## Install on Chrome 
 1. Download [release](https://github.com/theadiy/pasteinstead/archive/refs/heads/main.zip) and unzip.
-2. Go to "chrome://extensions" on chrome.
+2. Go to "chrome://extensions" on chrome and enable developer mode.
 3. Click "load unpacked extension".
 4. Choose chrome-extension directory you downloaded.
 
